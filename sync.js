@@ -1,4 +1,4 @@
-// Inquiry Bay: saves each learner's progress to the lecturer's class record. (c) 2026 Dr. Rohan Jowallah
+// Inquiry Bay: OPTIONAL progress sharing. Nothing is sent unless the visitor chooses to share. (c) 2026 Dr. Rohan Jowallah
 (function(){
 const SB_URL = "https://yjtahynkggizwtuuuvuw.supabase.co";
 const SB_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqdGFoeW5rZ2dpend0dXV1dnV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMDIyNTAsImV4cCI6MjA4OTU3ODI1MH0.iGI4pn4-uHVgABGxmbN0vUzja8fNBRRpmiqunp3dt0E";
@@ -27,27 +27,28 @@ function chip(){
   if (!c){ const bar = document.querySelector(".bar .wrap"); if (!bar) return; c = document.createElement("button"); c.type="button"; c.id="ibsChip"; c.className="ibs-chip"; c.addEventListener("click", () => ask(true)); bar.insertBefore(c, bar.querySelector("#navMap")); }
   const label = status==="ok" ? "Saved" : status==="busy" ? "Saving…" : status==="err" ? "Not saved yet" : "Saved on this device";
   c.title = label + (profile ? " · " + profile.name : "");
-  c.setAttribute("aria-label", (profile?profile.name+". ":"") + label + ". Change name");
-  c.innerHTML = `<i class="ibs-dot ${status==="ok"?"ok":status==="err"?"err":status==="busy"?"busy":""}"></i><span>${profile?esc(profile.name):"Sign in"}</span>`;
+  c.setAttribute("aria-label", (profile?profile.name+". ":"") + label + (profile ? ". Change sharing" : ". Share progress, optional"));
+  c.innerHTML = `<i class="ibs-dot ${status==="ok"?"ok":status==="err"?"err":status==="busy"?"busy":""}"></i><span>${profile?esc(profile.name):"Share progress (optional)"}</span>`;
 }
 
 function ask(change){
   if (document.querySelector(".ibs-ov")) return;
   const ov = document.createElement("div"); ov.className = "ibs-ov";
   ov.innerHTML = `<form class="ibs-card" role="dialog" aria-modal="true" aria-labelledby="ibsH">
-    <span class="kicker dark">${change?"Your details":"Before you begin"}</span>
-    <h2 id="ibsH">${change?"Update your details":"Welcome to Inquiry Bay"}</h2>
-    <p>Enter your name so your lecturer can see your progress, reflections and Proposal Blueprint as you walk the village.</p>
-    <label>Full name<input id="ibsName" autocomplete="name" required maxlength="120" value="${profile?esc(profile.name):""}"></label>
+    <span class="kicker dark">${change?"Your details":"Optional"}</span>
+    <h2 id="ibsH">${change?"Update your details":"Share your progress"}</h2>
+    <p>This is optional. The village works fully without it, and your work is always saved on this device. Only if you choose to share, enter a name or nickname and your lecturer will see your stamps, reflections and Proposal Blueprint.</p>
+    <label>Name or nickname<input id="ibsName" autocomplete="name" required maxlength="120" value="${profile?esc(profile.name):""}"></label>
     <label>Class or group (optional)<input id="ibsGroup" maxlength="60" placeholder="e.g. Group A" value="${profile&&profile.group?esc(profile.group):""}"></label>
-    <span class="err" id="ibsErr" hidden>Please type your full name.</span>
-    <button class="btn big" type="submit">${change?"Save":"Enter the village"}</button>
-    ${change?`<button type="button" class="btn ghost" id="ibsCancel">Cancel</button>`:""}
-    <small>Your work is saved to your lecturer's class record and on this device.</small>
+    <span class="err" id="ibsErr" hidden>Please type a name or nickname.</span>
+    <button class="btn big" type="submit">${change?"Save":"Share my progress"}</button>
+    <button type="button" class="btn ghost" id="ibsCancel">Not now</button>${change?`<button type="button" class="btn ghost" id="ibsStop">Stop sharing</button>`:""}
+    <small>You can skip this and still complete every stop.</small>
   </form>`;
   document.body.appendChild(ov);
   const f = ov.querySelector("form"); setTimeout(()=>ov.querySelector("#ibsName").focus(), 50);
   const cancel = ov.querySelector("#ibsCancel"); if (cancel) cancel.addEventListener("click", () => ov.remove());
+  const stop = ov.querySelector("#ibsStop"); if (stop) stop.addEventListener("click", () => { profile = null; try{ localStorage.removeItem(PKEY); }catch(e){} status = "idle"; ov.remove(); chip(); });
   f.addEventListener("submit", e => { e.preventDefault();
     const name = ov.querySelector("#ibsName").value.trim(), group = ov.querySelector("#ibsGroup").value.trim();
     if (name.split(/\s+/).join("").length < 2){ ov.querySelector("#ibsErr").hidden = false; return; }
@@ -74,6 +75,6 @@ function push(state, now){
 window.addEventListener("pagehide", () => { if (!profile || !last) return; try { fetch(SB_URL + "/rest/v1/rpc/ibrv_sync", { method:"POST", keepalive:true, headers:{ "Content-Type":"application/json", "apikey":SB_KEY, "Authorization":"Bearer "+SB_KEY }, body: JSON.stringify({ p_id: profile.id, p_name: profile.name, p_group: profile.group || null, p_stamps: Math.min(10, Object.values(last.stamps||{}).filter(Boolean).length), p_state: last }) }); } catch(e){} });
 
 window.IBSync = { push };
-function start(){ chip(); if (!profile) ask(false); else push(rd(SKEY) || {}, true); }
+function start(){ chip(); if (profile) push(rd(SKEY) || {}, true); }
 if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();
