@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Inquiry Bay Admin</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&display=swap">
+<style>
+:root{--bg:#f2f8f8;--surface:#fff;--surface-2:#e5f2f1;--fg:#0f2a30;--muted:#4d6a6f;--line:#d2e5e3;--sea:#00a3b4;--band1:#04262d;--band2:#0a4b55;--hibiscus:#e8435a;--mango:#ffb627;--ok:#1f8a5c;--ok-bg:#e1f4ea;--no:#c2392b;
+--f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;--f-body:"Atkinson Hyperlegible",system-ui,-apple-system,"Segoe UI",sans-serif;--shadow:0 1px 2px rgba(6,54,63,.08),0 10px 30px rgba(6,54,63,.10)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#061a1f;--surface:#0c2930;--surface-2:#12363e;--fg:#e8f5f3;--muted:#9dbcbc;--line:#1c444c;--sea:#22c3cf;--band1:#021216;--band2:#073740;--hibiscus:#ff6b7f;--mango:#ffc24b;--ok:#6fd8a0;--ok-bg:#163a2b;--no:#ff8a7a;--shadow:0 1px 2px rgba(0,0,0,.3),0 10px 30px rgba(0,0,0,.35);color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:16px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:linear-gradient(160deg,var(--band1),var(--band2));color:#eefaf8}
+header.top .wrap{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding-block:16px}
+.brand{font-family:var(--f-display);font-weight:800;font-size:1.25rem;flex:1}
+.brand small{display:block;font-family:var(--f-body);font-weight:400;font-size:.82rem;color:#a9d3d1}
+button{font:inherit;cursor:pointer}
+.btn{background:var(--mango);color:#06363f;border:none;border-radius:999px;padding:9px 18px;font-weight:700}
+.btn.ghost{background:transparent;color:inherit;border:1.5px solid currentColor;opacity:.9}
+.btn.danger{background:transparent;color:var(--no);border:1.5px solid var(--no)}
+h1,h2,h3{font-family:var(--f-display);font-weight:800;letter-spacing:-.02em;margin:0}
+.login{min-height:70vh;display:grid;place-items:center}
+.login form{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:26px;width:min(420px,100%);display:grid;gap:12px;box-shadow:var(--shadow)}
+input,select{padding:10px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--surface-2);color:var(--fg);font:inherit;width:100%}
+.err{color:var(--no);font-weight:700;font-size:.9rem}
+.tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:22px 0}
+@media (max-width:760px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:var(--shadow)}
+.tile b{display:block;font-family:var(--f-display);font-size:2rem;font-variant-numeric:tabular-nums;line-height:1.1}
+.tile span{color:var(--muted);font-size:.86rem}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:var(--shadow);margin-bottom:18px;min-width:0}
+.panel h2{font-size:1.2rem;margin-bottom:12px}
+.funnel{display:grid;gap:8px}
+.frow{display:grid;grid-template-columns:190px 1fr 56px;gap:10px;align-items:center;font-size:.9rem}
+@media (max-width:560px){.frow{grid-template-columns:120px 1fr 44px}}
+.bar{height:12px;background:var(--surface-2);border-radius:8px;overflow:hidden}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--sea),var(--mango));border-radius:8px}
+.num{text-align:right;font-variant-numeric:tabular-nums;font-weight:700}
+.tools{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+.tools input{max-width:280px}.tools select{max-width:200px}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{text-align:left;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:10px;border-bottom:1px solid var(--line);vertical-align:middle}
+tr.row{cursor:pointer}tr.row:hover td{background:var(--surface-2)}
+.pips{display:flex;gap:3px}.pips i{width:12px;height:12px;border-radius:3px;background:var(--surface-2);border:1px solid var(--line)}.pips i.on{background:var(--hibiscus);border-color:var(--hibiscus)}
+.pill{display:inline-block;padding:3px 9px;border-radius:999px;font-size:.78rem;font-weight:700;background:var(--surface-2)}
+.pill.done{background:var(--ok-bg);color:var(--ok)}
+.muted{color:var(--muted)}
+.drawer{position:fixed;inset:0;z-index:50;background:rgba(3,20,24,.55);display:flex;justify-content:flex-end}
+.drawer .sheet{background:var(--bg);width:min(720px,100%);height:100%;overflow:auto;padding:20px max(18px,env(safe-area-inset-right,0px)) 30px 18px;display:grid;gap:14px;align-content:start}
+.sheet .head{display:flex;gap:12px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.refl{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.refl h3{font-size:1rem;margin-bottom:4px}
+.refl p{white-space:pre-wrap;margin:0;font-size:.95rem}
+.refl small{color:var(--muted)}
+.empty{padding:30px;text-align:center;color:var(--muted)}
+footer{color:var(--muted);font-size:.82rem;padding-block:20px}
+</style></head>
+<body>
+<header class="top"><div class="wrap"><div class="brand">Inquiry Bay · Admin<small>Class record for the Research Village</small></div><span id="who"></span></div></header>
+<main class="wrap" id="app"></main>
+<footer class="wrap">Inquiry Bay Research Village. © 2026 Dr. Rohan Jowallah. Private lecturer view.</footer>
+<script src="data.js"></script>
+<script>
+(function(){
+const SB_URL="https://yjtahynkggizwtuuuvuw.supabase.co";
+const SB_KEY="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlqdGFoeW5rZ2dpend0dXV1dnV3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQwMDIyNTAsImV4cCI6MjA4OTU3ODI1MH0.iGI4pn4-uHVgABGxmbN0vUzja8fNBRRpmiqunp3dt0E";
+const BP=[["title","Working title"],["background","Background and context"],["problem","Problem statement"],["purpose","Purpose statement"],["rq","Research questions or hypotheses"],["significance","Significance"],["definitions","Key terms and operational definitions"],["framework","Theoretical or conceptual framework"],["litgap","Literature themes and the gap"],["approach","Approach and worldview"],["design","Research design"],["sample","Population, sample and sampling"],["instruments","Instruments and data collection"],["analysis","Data analysis"],["ethics","Ethical considerations"],["appendices","Appendices"]];
+const S = (typeof STATIONS!=="undefined") ? STATIONS : [];
+const $=s=>document.querySelector(s), app=$("#app");
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const words=s=>(s||"").trim().split(/\s+/).filter(Boolean).length;
+let pass=null, rows=[], q="", grp="", timer=null;
+try{ pass=sessionStorage.getItem("ibrv-admin"); }catch(e){}
+
+async function rpc(fn, body){
+  const r=await fetch(SB_URL+"/rest/v1/rpc/"+fn,{method:"POST",headers:{"Content-Type":"application/json","apikey":SB_KEY,"Authorization":"Bearer "+SB_KEY},body:JSON.stringify(body)});
+  if(!r.ok){ const t=await r.text(); const e=new Error(/invalid passcode/i.test(t)?"bad":"net"); throw e; }
+  const t=await r.text(); return t?JSON.parse(t):null;
+}
+function login(msg){
+  $("#who").innerHTML="";
+  app.innerHTML=`<div class="login"><form id="lf"><h1>Lecturer sign-in</h1><p class="muted">Enter your admin passcode to see the class record.</p><input id="pc" type="password" autocomplete="current-password" placeholder="Passcode" required>${msg?`<span class="err">${esc(msg)}</span>`:""}<button class="btn" type="submit">Open class record</button></form></div>`;
+  $("#lf").addEventListener("submit",async e=>{e.preventDefault(); pass=$("#pc").value.trim(); await load(true);});
+  setTimeout(()=>$("#pc")&&$("#pc").focus(),50);
+}
+async function load(first){
+  try{ rows=await rpc("ibrv_admin_list",{p_pass:pass})||[]; try{sessionStorage.setItem("ibrv-admin",pass);}catch(e){} render(); }
+  catch(e){ if(e.message==="bad"){ try{sessionStorage.removeItem("ibrv-admin");}catch(_){} pass=null; login("That passcode is not right. Try again."); } else if(first){ login("Could not reach the class record. Check your connection and try again."); } }
+}
+const stampsOf=r=>r.state&&r.state.stamps?r.state.stamps:{};
+const ago=d=>{const s=(Date.now()-new Date(d))/1000; if(s<60)return"just now"; if(s<3600)return Math.floor(s/60)+" min ago"; if(s<86400)return Math.floor(s/3600)+" h ago"; return Math.floor(s/86400)+" d ago";};
+function filtered(){ return rows.filter(r=>(!grp||(r.group_code||"")===grp)&&(!q||(r.name+" "+(r.group_code||"")).toLowerCase().includes(q))); }
+function render(){
+  $("#who").innerHTML=`<button class="btn ghost" id="rf">Refresh</button> <button class="btn ghost" id="lo">Sign out</button>`;
+  $("#rf").onclick=()=>load(); $("#lo").onclick=()=>{ try{sessionStorage.removeItem("ibrv-admin");}catch(e){} pass=null; clearInterval(timer); login(); };
+  const list=filtered(), n=list.length, done=list.filter(r=>r.stamps>=10).length;
+  const avg=n?(list.reduce((a,r)=>a+r.stamps,0)/n).toFixed(1):"0";
+  const week=list.filter(r=>Date.now()-new Date(r.updated_at)<7*864e5).length;
+  const groups=[...new Set(rows.map(r=>r.group_code).filter(Boolean))].sort();
+  const per=S.map(s=>list.filter(r=>stampsOf(r)[s.id]).length);
+  app.innerHTML=`<div class="tiles">
+    <div class="tile"><b>${n}</b><span>Learners${grp?" in "+esc(grp):""}</span></div>
+    <div class="tile"><b>${done}</b><span>Finished all 10 stops</span></div>
+    <div class="tile"><b>${avg}</b><span>Average stamps</span></div>
+    <div class="tile"><b>${week}</b><span>Active in the last 7 days</span></div></div>
+  <section class="panel"><h2>Stamps by stop</h2><div class="funnel">${S.map((s,i)=>`<div class="frow"><span>${s.num}. ${esc(s.name)}</span><span class="bar"><i style="width:${n?per[i]/n*100:0}%"></i></span><span class="num">${per[i]}</span></div>`).join("")||'<p class="muted">Stop list unavailable.</p>'}</div></section>
+  <section class="panel"><h2>Learners</h2>
+    <div class="tools"><input id="q" type="search" placeholder="Search by name" value="${esc(q)}"><select id="g"><option value="">All groups</option>${groups.map(g=>`<option ${g===grp?"selected":""}>${esc(g)}</option>`).join("")}</select><button class="btn ghost" id="csv" style="color:var(--fg)">Export CSV</button></div>
+    ${list.length?`<div class="tablewrap"><table><thead><tr><th>Name</th><th>Group</th><th>Progress</th><th>Stamps</th><th>Reflection words</th><th>Last active</th></tr></thead><tbody>${list.map(r=>{const st=stampsOf(r); const w=Object.values((r.state&&r.state.refl)||{}).reduce((a,t)=>a+words(t),0); return `<tr class="row" data-id="${r.id}"><td><b>${esc(r.name)}</b></td><td>${esc(r.group_code||"")}</td><td><span class="pips">${S.map(s=>`<i class="${st[s.id]?"on":""}" title="${esc(s.name)}"></i>`).join("")}</span></td><td>${r.stamps>=10?'<span class="pill done">Complete</span>':r.stamps+" / 10"}</td><td class="num">${w}</td><td class="muted">${ago(r.updated_at)}</td></tr>`;}).join("")}</tbody></table></div>`:`<div class="empty">No learners yet. When someone enters their name in the village, they appear here.</div>`}
+  </section>`;
+  $("#q").oninput=e=>{q=e.target.value.toLowerCase(); render(); const el=$("#q"); el.focus(); el.setSelectionRange(el.value.length,el.value.length);};
+  $("#g").onchange=e=>{grp=e.target.value; render();};
+  $("#csv").onclick=csv;
+  app.querySelectorAll("tr.row").forEach(tr=>tr.onclick=()=>detail(rows.find(r=>r.id===tr.dataset.id)));
+}
+function detail(r){
+  if(!r) return; const st=r.state||{}; const stp=st.stamps||{}, refl=st.refl||{}, bp=st.bp||{};
+  const d=document.createElement("div"); d.className="drawer";
+  d.innerHTML=`<div class="sheet" role="dialog" aria-modal="true"><div class="head"><div><h2>${esc(r.name)}</h2><span class="muted">${esc(r.group_code||"No group")} · ${r.stamps} of 10 stamps · last active ${ago(r.updated_at)}</span></div><div style="display:flex;gap:8px"><button class="btn danger" id="del">Delete</button><button class="btn" id="cl">Close</button></div></div>
+  <h3>Reflections</h3>${S.map(s=>`<div class="refl"><h3>${s.num}. ${esc(s.name)} ${stp[s.id]?'<span class="pill done">Stamped</span>':'<span class="pill">Not stamped</span>'}</h3><small>${esc(s.reflection)}</small><p>${refl[s.id]?esc(refl[s.id]):'<span class="muted">No reflection yet.</span>'}</p>${refl[s.id]?`<small>${words(refl[s.id])} words</small>`:""}</div>`).join("")}
+  <h3>Proposal Blueprint</h3>${BP.map(([k,l])=>`<div class="refl"><h3>${esc(l)}</h3><p>${bp[k]?esc(bp[k]):'<span class="muted">Not written yet.</span>'}</p></div>`).join("")}</div>`;
+  document.body.appendChild(d);
+  const close=()=>d.remove(); d.addEventListener("click",e=>{if(e.target===d)close();}); d.querySelector("#cl").onclick=close;
+  d.querySelector("#del").onclick=async function(){ if(this.dataset.c!=="1"){ this.dataset.c="1"; this.textContent="Click again to delete"; return; } try{ await rpc("ibrv_admin_delete",{p_pass:pass,p_id:r.id}); close(); load(); }catch(e){ this.textContent="Could not delete"; } };
+}
+function csv(){
+  const list=filtered(); const head=["Name","Group","Stamps","Last active"].concat(S.map(s=>"Stamp: "+s.name)).concat(S.map(s=>"Reflection: "+s.name)).concat(BP.map(b=>"Blueprint: "+b[1]));
+  const cell=v=>'"'+String(v==null?"":v).replace(/"/g,'""')+'"';
+  const lines=[head.map(cell).join(",")].concat(list.map(r=>{const st=r.state||{}; return [r.name,r.group_code||"",r.stamps,new Date(r.updated_at).toLocaleString()].concat(S.map(s=>(st.stamps||{})[s.id]?"Yes":"")).concat(S.map(s=>(st.refl||{})[s.id]||"")).concat(BP.map(b=>(st.bp||{})[b[0]]||"")).map(cell).join(",");}));
+  const a=document.createElement("a"); a.href=URL.createObjectURL(new Blob(["﻿"+lines.join("\n")],{type:"text/csv"})); a.download="inquiry-bay-class-record.csv"; document.body.appendChild(a); a.click(); a.remove();
+}
+if(pass) load(true); else login();
+timer=setInterval(()=>{ if(pass && !document.querySelector(".drawer")) load(); },60000);
+})();
+</script>
+</body></html>

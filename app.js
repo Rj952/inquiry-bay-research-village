@@ -9,7 +9,7 @@ const shuffle = a => { a = a.slice(); for (let i=a.length-1;i>0;i--){ const j=Ma
 let S = { stamps:{}, concepts:{}, acts:{}, refl:{}, bp:{}, align:[], name:"" };
 try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch(e){}
 let saveT;
-function save(){ clearTimeout(saveT); saveT = setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }, 150); }
+function save(){ clearTimeout(saveT); saveT = setTimeout(()=>{ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} if (window.IBSync) IBSync.push(S); }, 150); }
 const byId = id => STATIONS.find(s => s.id === id);
 const idx = id => STATIONS.findIndex(s => s.id === id);
 const stampCount = () => STATIONS.filter(s => S.stamps[s.id]).length;
