@@ -28,7 +28,7 @@ function chip(){
   const label = status==="ok" ? "Saved" : status==="busy" ? "Saving…" : status==="err" ? "Not saved yet" : "Saved on this device";
   c.title = label + (profile ? " · " + profile.name : "");
   c.setAttribute("aria-label", (profile?profile.name+". ":"") + label + (profile ? ". Change sharing" : ". Share progress, optional"));
-  c.innerHTML = `<i class="ibs-dot ${status==="ok"?"ok":status==="err"?"err":status==="busy"?"busy":""}"></i><span>${profile?esc(profile.name):"Share progress (optional)"}</span>`;
+  c.innerHTML = `<i class="ibs-dot ${status==="ok"?"ok":status==="err"?"err":status==="busy"?"busy":""}"></i><span>${profile?esc(profile.name):"Share (optional)"}</span>`;
 }
 
 function ask(change){
