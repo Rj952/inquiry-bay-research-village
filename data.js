@@ -1,16 +1,16 @@
 const NARRATION = {
-welcome:   "00-welcome.mp3",
-s1:        "01-arrival-jetty.mp3",
-s2:        "02-worldview-lookout.mp3",
-s3:        "03-craft-market.mp3",
-s4:        "04-fishermans-pier.mp3",
-s5:        "05-courthouse-library.mp3",
-s6:        "06-boatyard.mp3",
-s7:        "07-lighthouse.mp3",
-s8:        "08-cookshop.mp3",
-s9:        "09-coffee-sorting-shed.mp3",
-s10:       "10-proposal-pavilion.mp3",
-farewell:  "11-departure.mp3"
+welcome:   "inquiry-bay-narration.mp3#t=0,115.62",
+s1:        "inquiry-bay-narration.mp3#t=115.62,212.89",
+s2:        "inquiry-bay-narration.mp3#t=212.89,306.51",
+s3:        "inquiry-bay-narration.mp3#t=306.51,399.39",
+s4:        "inquiry-bay-narration.mp3#t=399.39,486.22",
+s5:        "inquiry-bay-narration.mp3#t=486.22,586.44",
+s6:        "inquiry-bay-narration.mp3#t=586.44,684.41",
+s7:        "inquiry-bay-narration.mp3#t=684.41,777.24",
+s8:        "inquiry-bay-narration.mp3#t=777.24,871.81",
+s9:        "inquiry-bay-narration.mp3#t=871.81,970.39",
+s10:       "inquiry-bay-narration.mp3#t=970.39,1080.02",
+farewell:  "inquiry-bay-narration.mp3#t=1080.02,1136.1"
 };
 const STATIONS = [
 {
