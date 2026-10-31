@@ -24,7 +24,7 @@ const st = document.createElement("style"); st.textContent = css; document.head.
 
 function chip(){
   let c = document.getElementById("ibsChip");
-  if (!c){ const bar = document.querySelector(".bar .wrap"); if (!bar) return; c = document.createElement("button"); c.type="button"; c.id="ibsChip"; c.className="ibs-chip"; c.addEventListener("click", () => ask(true)); bar.insertBefore(c, bar.querySelector("#navMap")); }
+  if (!c){ const bar = document.querySelector(".bar .wrap"); if (!bar) return; c = document.createElement("button"); c.type="button"; c.id="ibsChip"; c.className="ibs-chip"; c.addEventListener("click", () => ask(!!profile)); bar.insertBefore(c, bar.querySelector("#navMap")); }
   const label = status==="ok" ? "Saved" : status==="busy" ? "Saving…" : status==="err" ? "Not saved yet" : "Saved on this device";
   c.title = label + (profile ? " · " + profile.name : "");
   c.setAttribute("aria-label", (profile?profile.name+". ":"") + label + (profile ? ". Change sharing" : ". Share progress, optional"));
