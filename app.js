@@ -166,6 +166,7 @@ ${markers}
 }
 let view = "home", viewArg = null;
 function go(v, arg){ stopAudio(); view = v; viewArg = arg; render(); window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"}); }
+if (window.IBMap) IBMap.onEnter = id => go("station", id);
 function render(){
 updateMeter();
 const app = $("#app");
@@ -177,21 +178,25 @@ wire(app);
 }
 function homeHTML(){
 const n = stampCount(), all = n === STATIONS.length;
-return `<div class="wrap">
-<section class="hero">
-<span class="eyebrow">A Caribbean research resort</span>
-<h1>Inquiry Bay Research Village</h1>
-<p class="lede">Welcome to the bay. Before you write your research proposal, you will walk the village from the Arrival Jetty to the Proposal Pavilion. At each stop you gather key concepts, practise them, reflect on your own study, and earn a stamp in your passport. Stops open one at a time, in the order a real study is built.</p>
-<div class="howto"><span><b>1 · Gather</b> every concept card</span><span><b>2 · Practise</b> until every activity is correct</span><span><b>3 · Reflect</b> on your own study (at least ${MINW} words)</span><span><b>4 · Stamp</b> your passport</span></div>
+const states = STATIONS.map(s=>({id:s.id,num:s.num,name:s.name,theme:s.theme,lk:!unlocked(s.id),dn:!!S.stamps[s.id],cur:s.id===currentId()&&!PREVIEW}));
+return `<section class="band"><div class="wrap band-in">
+<div class="hero">
+<span class="kicker">A Caribbean research village</span>
+<h1>Inquiry Bay<br><span>Research Village</span></h1>
+<p class="lede">Walk the bay from the Arrival Jetty to the Proposal Pavilion. At each stop you gather the key concepts, practise them, reflect on your own research idea and earn a stamp. Stops open in the order a real study is built.</p>
+<ol class="steps4"><li><b>Gather</b>every concept card</li><li><b>Practise</b>until every answer is right</li><li><b>Reflect</b>at least ${MINW} words on your own study</li><li><b>Stamp</b>your research passport</li></ol>
 <div class="welcome-audio">${playerHTML(all?"farewell":"welcome", all?"Departure message":"Welcome to Inquiry Bay")}</div>
-</section>
+</div>
+<div class="mapbox">${window.IBMap?IBMap.html(states, mapSVG()):mapSVG()}</div>
+<p class="maphint">Hover over or tap any building to preview what it covers. Stops unlock one at a time.</p>
+</div></section>
+<div class="wrap">
 ${all?`<div class="gate"><h2>Your passport is full.</h2><p>You have gathered everything you need. Take your Proposal Blueprint and write your full research proposal.</p><div class="row" style="justify-content:flex-start"><button class="btn big" data-go="cert">View my certificate</button><button class="btn ghost" data-go="passport">Open my passport</button></div></div>`:""}
-<div class="mapbox">${window.IBMap?IBMap.html(STATIONS.map(s=>({id:s.id,num:s.num,name:s.name,theme:s.theme,lk:!unlocked(s.id),dn:!!S.stamps[s.id],cur:s.id===currentId()&&!PREVIEW})),mapSVG()):mapSVG()}</div>
-<div class="section-h"><h2>Your route</h2><span class="eyebrow">${n} of ${STATIONS.length} stamped</span></div>
-<ol class="route">${STATIONS.map(s => {
+<div class="section-h"><div><span class="kicker dark">Your route</span><h2>Ten stops to a research proposal</h2></div><span class="count">${n} / ${STATIONS.length} stamped</span></div>
+${window.IBMap&&IBMap.route?IBMap.route(states):`<ol class="route">${STATIONS.map(s => {
 const lk = !unlocked(s.id), dn = !!S.stamps[s.id], cur = s.id===currentId();
-return `<li class="${dn?"done":cur?"current":""}"><button type="button" data-st="${s.id}" ${lk?"disabled":""}><span class="n">${dn?"✓":s.num}</span><span class="t"><b>${esc(s.name)}</b><small>${esc(s.theme)}${lk?" · opens after stop "+(s.num-1):""}</small></span></button></li>`;
-}).join("")}</ol>
+return `<li class="${dn?"done":cur?"current":""}"><button type="button" data-st="${s.id}" ${lk?"disabled":""}><span class="n">${dn?"✓":s.num}</span><span class="t"><b>${esc(s.name)}</b><small>${esc(s.theme)}</small></span></button></li>`;
+}).join("")}</ol>`}
 </div>`;
 }
 function stationHTML(st){
@@ -384,7 +389,7 @@ $("#gate")?.querySelectorAll("[data-st],[data-go]").forEach(x => x.addEventListe
 function wire(app){
 wirePlayers(app);
 app.querySelectorAll(".st-marker").forEach(m => {
-const open = () => { if (!m.classList.contains("locked")) go("station", m.dataset.id); else toast("This stop opens when you finish the one before it."); };
+const open = () => { if (!m.classList.contains("locked")) go("station", m.dataset.id); else if (window.IBMap && IBMap.preview) IBMap.preview(m.dataset.id); else toast("This stop opens when you finish the one before it."); };
 m.addEventListener("click", open); m.addEventListener("keydown", e => { if (e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); } });
 });
 app.querySelectorAll(".route [data-st]").forEach(b => b.addEventListener("click", () => go("station", b.dataset.st)));

@@ -1,16 +1,16 @@
 const NARRATION = {
-welcome:   "audio/00-welcome.mp3",
-s1:        "audio/01-arrival-jetty.mp3",
-s2:        "audio/02-worldview-lookout.mp3",
-s3:        "audio/03-craft-market.mp3",
-s4:        "audio/04-fishermans-pier.mp3",
-s5:        "audio/05-courthouse-library.mp3",
-s6:        "audio/06-boatyard.mp3",
-s7:        "audio/07-lighthouse.mp3",
-s8:        "audio/08-cookshop.mp3",
-s9:        "audio/09-coffee-sorting-shed.mp3",
-s10:       "audio/10-proposal-pavilion.mp3",
-farewell:  "audio/11-departure.mp3"
+welcome:   "00-welcome.mp3",
+s1:        "01-arrival-jetty.mp3",
+s2:        "02-worldview-lookout.mp3",
+s3:        "03-craft-market.mp3",
+s4:        "04-fishermans-pier.mp3",
+s5:        "05-courthouse-library.mp3",
+s6:        "06-boatyard.mp3",
+s7:        "07-lighthouse.mp3",
+s8:        "08-cookshop.mp3",
+s9:        "09-coffee-sorting-shed.mp3",
+s10:       "10-proposal-pavilion.mp3",
+farewell:  "11-departure.mp3"
 };
 const STATIONS = [
 {
