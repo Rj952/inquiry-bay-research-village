@@ -37,7 +37,7 @@ function ask(change){
   ov.innerHTML = `<form class="ibs-card" role="dialog" aria-modal="true" aria-labelledby="ibsH">
     <span class="kicker dark">${change?"Your details":"Optional"}</span>
     <h2 id="ibsH">${change?"Update your details":"Share your progress"}</h2>
-    <p>This is optional. The village works fully without it, and your work is always saved on this device. Only if you choose to share, enter a name or nickname and your lecturer will see your stamps, reflections and Proposal Blueprint.</p>
+    <p>This is optional. The village works fully without it, and your work is always saved on this device. Only if you choose to share, enter a name or nickname and the village host will see your stamps, reflections and Proposal Blueprint.</p>
     <label>Name or nickname<input id="ibsName" autocomplete="name" required maxlength="120" value="${profile?esc(profile.name):""}"></label>
     <label>Class or group (optional)<input id="ibsGroup" maxlength="60" placeholder="e.g. Group A" value="${profile&&profile.group?esc(profile.group):""}"></label>
     <span class="err" id="ibsErr" hidden>Please type a name or nickname.</span>

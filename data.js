@@ -26,10 +26,7 @@ concepts: [
 { term: "Critical consumer", def: "A reader who asks of every study: who was studied, how, by whom, and can I trust the conclusion? You must be a critical consumer before you can be a good producer.", ex: "A headline says 'Boys hate reading'. A critical consumer asks: how many boys, which schools, measured how?" }
 ],
 caribbean: { title: "Why this matters here", text: "Caribbean schools are often reformed on the strength of imported studies and good intentions. When we do our own research, in our own classrooms, with our own learners, we stop borrowing answers and start producing them." },
-reading: [
-{ cite: "Creswell (2013), Chapter 1", note: "The research process and the three approaches." },
-{ cite: "Leedy, Ormrod & Johnson (2014), Chapter 1", note: "What research is and what it is not." }
-],
+reading: [],
 activities: [
 { type: "sort", prompt: "Research or not research? Tap a card, then tap the right basket.",
 buckets: ["This is research", "This is not research"],
@@ -60,11 +57,8 @@ concepts: [
 { term: "Transformative and critical", def: "Research should expose unfair power and help change it. This connects to Freire: research as a way of reading the world in order to change it.", ex: "Working with a community to study why girls in one district leave school early, and acting on what is found." },
 { term: "Action research", def: "A practitioner studies a problem in their own setting through cycles of plan, act, observe and reflect, to improve practice.", ex: "A Grade 3 teacher tries peer reading for six weeks, collects reading logs, reflects, then adjusts." }
 ],
-caribbean: { title: "Connecting to Miron (1998)", text: "Miron writes about research for education reform in the South, which includes us. The key message: quantitative and qualitative methods each have strengths and limits, neither is automatically better, and the choice should follow from the question you are asking and the context you are in. Often the strongest studies combine them." },
-reading: [
-{ cite: "Miron, G. (1998). Choosing the right research methods: Qualitative, quantitative, or both?", note: "The core reading for this station. Read it before you choose your approach." },
-{ cite: "Creswell (2013), Chapter 1", note: "The four worldviews and how they connect to designs." }
-],
+caribbean: { title: "Choosing a method from the South", text: "Research for education reform in the Caribbean and the wider South carries one key message: quantitative and qualitative methods each have strengths and limits, neither is automatically better, and the choice should follow from the question you are asking and the context you are in. Often the strongest studies combine them." },
+reading: [],
 activities: [
 { type: "sort", prompt: "Which worldview is speaking? Sort each statement.",
 buckets: ["Post-positivist", "Constructivist", "Pragmatic", "Transformative"],
@@ -78,9 +72,9 @@ items: [
 ] },
 { type: "mcq", prompt: "Choose the right approach.",
 questions: [
-{ q: "A ministry wants to know whether a reading reform raised scores across 200 schools, and why some schools struggled with it.", options: ["Quantitative only", "Qualitative only", "Mixed methods", "No research needed"], a: 2, why: "\"Whether\" asks for numbers across many schools. \"Why\" asks for depth. Together they call for mixed methods, as Miron suggests." },
+{ q: "A ministry wants to know whether a reading reform raised scores across 200 schools, and why some schools struggled with it.", options: ["Quantitative only", "Qualitative only", "Mixed methods", "No research needed"], a: 2, why: "\"Whether\" asks for numbers across many schools. \"Why\" asks for depth. Together they call for mixed methods." },
 { q: "You are a teacher who wants to improve your own students' spelling over one term and study what happens.", options: ["Action research", "Ethnography", "Survey research", "Experimental research with 2,000 students"], a: 0, why: "Practitioner, own setting, improvement through cycles: action research." },
-{ q: "According to Miron (1998), what should mainly drive your choice of method?", options: ["What your supervisor likes", "The research question and context", "Whatever is fastest", "Numbers are always more scientific"], a: 1, why: "The question and the context come first. Methods are tools chosen to fit them." }
+{ q: "What should mainly drive your choice of method?", options: ["What your supervisor likes", "The research question and context", "Whatever is fastest", "Numbers are always more scientific"], a: 1, why: "The question and the context come first. Methods are tools chosen to fit them." }
 ] }
 ],
 reflection: "Which worldview feels closest to how you see your own topic? Explain why, and say whether your study is leaning quantitative, qualitative, mixed or action research.",
@@ -101,10 +95,7 @@ concepts: [
 { term: "Operational definitions", def: "Clear, measurable meanings for your key terms, so every reader knows exactly what you mean in this study.", ex: "\"Reading motivation\" is defined as the score on a 20-item reading motivation scale." }
 ],
 caribbean: { title: "A Caribbean problem, not a borrowed one", text: "A strong problem statement uses local evidence: national examination results, ministry reports, school records, Caribbean studies. If your only evidence comes from the United States or the United Kingdom, ask whether the problem looks the same in your setting." },
-reading: [
-{ cite: "Creswell (2013), Chapter 6", note: "Writing the introduction and the problem." },
-{ cite: "Walliman (2022), Chapter 3", note: "Finding and focusing a research problem." }
-],
+reading: [],
 activities: [
 { type: "order", prompt: "Narrow the funnel. Tap from broadest to most focused.",
 steps: ["Education", "Literacy", "Boys' literacy in primary schools", "Reading motivation among Grade 4 boys", "Reading motivation among Grade 4 boys in three rural primary schools in one parish"] },
@@ -135,9 +126,7 @@ concepts: [
 { term: "Alignment", def: "Problem, purpose, questions and methods must point in the same direction. A qualitative purpose with a 'to what extent' question is misaligned.", ex: "Problem about why teachers leave → purpose to explore reasons → 'How do teachers describe...' → interviews." }
 ],
 caribbean: { title: "Questions with a Caribbean line", text: "Good questions name real people and places: Grade 9 students in technical high schools, parents in a fishing community, teachers who returned after working abroad. Specific questions catch specific answers." },
-reading: [
-{ cite: "Creswell (2013), Chapters 6 and 7", note: "Purpose statements, research questions and hypotheses." }
-],
+reading: [],
 activities: [
 { type: "sort", prompt: "Quantitative or qualitative question?",
 buckets: ["Quantitative", "Qualitative"],
@@ -172,13 +161,10 @@ concepts: [
 { term: "Literature matrix", def: "A cross-analysis table: author and year, purpose, method, sample, findings, and gap. It lets you see patterns across sources before you write.", ex: "Columns across, one study per row. Patterns become your themes." },
 { term: "Synthesis vs. summary", def: "Summary describes one source at a time. Synthesis groups sources by theme, compares them and shows agreement, conflict and gaps.", ex: "\"Three studies (A, B, C) agree that ..., while D found the opposite in rural schools.\"" },
 { term: "Theoretical vs. conceptual framework", def: "A theoretical framework is an established theory that explains your problem. A conceptual framework is your own map of how the key concepts in your study connect.", ex: "Theory: Vygotsky's sociocultural theory. Concept map: home literacy → motivation → reading scores." },
-{ term: "APA 7th edition", def: "The referencing style for your proposal: author-date in-text citations and a matching, alphabetical reference list.", ex: "(Miron, 1998) in the text, and the full reference at the end." }
+{ term: "APA 7th edition", def: "The referencing style for your proposal: author-date in-text citations and a matching, alphabetical reference list.", ex: "(Brown, 2021) in the text, and the full reference at the end." }
 ],
 caribbean: { title: "Look for Caribbean voices first", text: "Search for Caribbean scholarship before you rely on overseas studies. If you cannot find local research on your problem, that absence may be the gap your study fills. Say so clearly." },
-reading: [
-{ cite: "Creswell (2013), Chapter 2", note: "Reviewing the literature and literature maps." },
-{ cite: "Onwuegbuzie, Leech & Collins (2012)", note: "Qualitative techniques for analysing and synthesising the literature." }
-],
+reading: [],
 activities: [
 { type: "sort", prompt: "Empirical or non-empirical source?",
 buckets: ["Empirical", "Non-empirical"],
@@ -198,7 +184,7 @@ questions: [
 "Smith (2019), Brown (2020) and Grant (2021) all found that feedback improved writing, although Grant's rural sample showed smaller gains.",
 "I think feedback is important.",
 "Feedback is defined in the dictionary as a response." ], a: 1, why: "It groups sources, compares them and notes a difference." },
-{ q: "Correct APA 7 in-text citation for one author:", options: ["(Miron 1998, UNESCO)", "(G. Miron)", "(Miron, 1998)", "[Miron - 1998]"], a: 2, why: "Author surname, comma, year." }
+{ q: "Correct APA 7 in-text citation for one author:", options: ["(Brown 2021, UNESCO)", "(K. Brown)", "(Brown, 2021)", "[Brown - 2021]"], a: 2, why: "Author surname, comma, year." }
 ] }
 ],
 reflection: "Name two sources you have found for your topic. Are they empirical? What theme connects them, and what gap do you see?",
@@ -219,11 +205,8 @@ concepts: [
 { term: "Non-probability sampling", def: "Participants are chosen for a reason, not by chance. Types: purposive, convenience, snowball. Common in qualitative studies.", ex: "Purposive: choose six principals who have led schools through a hurricane recovery." },
 { term: "Sample size logic", def: "Quantitative studies need enough people to represent the population. Qualitative studies need enough depth, and stop when new data adds nothing new (saturation).", ex: "300 survey responses vs. 8 rich interviews: both can be right." }
 ],
-caribbean: { title: "Miron again: fit the boat to the sea", text: "Small island systems have small populations. A national random sample may be possible in one territory and impossible in another. Miron's advice applies: let your question and your real context decide the design, then defend that choice in your methods section." },
-reading: [
-{ cite: "Creswell (2013), Chapters 8 to 10", note: "Quantitative, qualitative and mixed methods procedures." },
-{ cite: "Miron (1998)", note: "Strengths and limitations of each approach." }
-],
+caribbean: { title: "Fit the boat to the sea", text: "Small island systems have small populations. A national random sample may be possible in one territory and impossible in another. The same rule applies: let your question and your real context decide the design, then defend that choice in your methods section." },
+reading: [],
 activities: [
 { type: "mcq", prompt: "Choose the right boat for each voyage.",
 questions: [
@@ -242,7 +225,7 @@ items: [
 { t: "Asking each participant to refer another teacher who returned from abroad.", b: 1, why: "Snowball sampling." }
 ] }
 ],
-reflection: "Which design fits your research question, and why? Name your population, your sample and your sampling technique. Use Miron's idea of fit in your answer.",
+reflection: "Which design fits your research question, and why? Name your population, your sample and your sampling technique. Explain how your design fits your context.",
 resources: []
 },
 {
@@ -261,9 +244,7 @@ concepts: [
 { term: "Data protection and integrity", def: "Store data securely, keep it only as long as needed, follow data protection law, report honestly, and acknowledge all sources and any AI assistance.", ex: "Jamaica's Data Protection Act (2020) applies to personal data you collect." }
 ],
 caribbean: { title: "Small places, big ethics", text: "In small Caribbean communities, people are easy to identify. 'A principal of a small rural school in the west' may point to one person. Disguise details carefully, and think about who could recognise your participants." },
-reading: [
-{ cite: "Creswell (2013), Chapter 4", note: "Ethical issues across the research process." }
-],
+reading: [],
 activities: [
 { type: "sort", prompt: "Anonymity or confidentiality?",
 buckets: ["Anonymity", "Confidentiality"],
@@ -298,10 +279,7 @@ concepts: [
 { term: "Objectivity, subjectivity and reflexivity", def: "Quantitative writing aims for distance and objectivity. Qualitative writing acknowledges the researcher's position and reflects on how it shapes the study.", ex: "\"As a teacher in this community for 15 years, I bring ...\"" }
 ],
 caribbean: { title: "Season the instrument for the setting", text: "An instrument built in another country may not fit here. Check words and examples: does 'grade school' or 'semester' make sense to your participants? Will a Creole-dominant child understand the item? Adapt, then pilot." },
-reading: [
-{ cite: "Walliman (2022), Chapters 6 to 10", note: "Data, variables, data quality and collection methods." },
-{ cite: "Creswell (2013), Chapters 8 and 9", note: "Instruments, validity, reliability and qualitative procedures." }
-],
+reading: [],
 activities: [
 { type: "sort", prompt: "Which tradition does each quality term belong to?",
 buckets: ["Quantitative quality", "Qualitative quality"],
@@ -338,10 +316,7 @@ concepts: [
 { term: "Match analysis to question", def: "The kind of question decides the analysis. Description → descriptives. Comparison → t-test or ANOVA. Relationship → correlation. Experience → thematic analysis.", ex: "If your RQ asks 'how', a t-test cannot answer it." }
 ],
 caribbean: { title: "Grading Blue Mountain beans", text: "Coffee graders do not judge a harvest by one bean. They sort, sample and grade carefully. Likewise, do not build a finding on one quote or one striking number. Look for patterns across the data." },
-reading: [
-{ cite: "Walliman (2022), Chapters 7 to 10", note: "Quantitative and qualitative analysis." },
-{ cite: "Creswell (2013), Chapters 8 and 9", note: "Analysis plans in the methods section." }
-],
+reading: [],
 activities: [
 { type: "calc", prompt: "Weigh the beans. Five students scored 12, 15, 15, 18 and 20 on a reading quiz. Calculate:",
 fields: [ { label: "Mean", answer: 16, tol: 0.05 }, { label: "Median", answer: 15, tol: 0 }, { label: "Mode", answer: 15, tol: 0 }, { label: "Range", answer: 8, tol: 0 } ],
@@ -371,10 +346,7 @@ concepts: [
 { term: "Appendices", def: "Supporting documents placed at the end: consent and assent forms, permission letters, instruments, interview guides, timelines.", ex: "Appendix A: Parent consent form. Appendix B: Interview guide." }
 ],
 caribbean: { title: "From the word to the proposal", text: "You arrived with a question. You now carry a worldview, a focused problem, aligned questions, a literature map, a design, an ethical plan, instruments and an analysis plan. Build your blueprint below, then take it into your full proposal." },
-reading: [
-{ cite: "Walliman (2022), Chapter 11", note: "Writing up." },
-{ cite: "APA (2020). Publication Manual, 7th ed.", note: "Formatting, citations and references." }
-],
+reading: [],
 activities: [
 { type: "mcq", prompt: "Alignment detective: find the broken link.",
 questions: [

@@ -31,7 +31,7 @@ const BP = [
 { k:"framework", label:"Theoretical or conceptual framework", hint:"Name the theory or describe how your concepts connect.", from:["s5"] },
 { k:"litgap", label:"Main themes in the literature and the gap", hint:"Two or three themes, and what is still missing.", from:["s5"] } ]},
 { group:"Section 3 · Methods", fields:[
-{ k:"approach", label:"Approach and worldview", hint:"Quantitative, qualitative, mixed or action research, and why. Connect to Miron (1998).", from:["s2"] },
+{ k:"approach", label:"Approach and worldview", hint:"Quantitative, qualitative, mixed or action research, and why. Say how your question and context led you to it.", from:["s2"] },
 { k:"design", label:"Research design", hint:"For example: survey, correlational, case study, phenomenology.", from:["s6"] },
 { k:"sample", label:"Population, sample and sampling technique", hint:"Who, how many, and how they will be chosen.", from:["s6"] },
 { k:"instruments", label:"Instruments and data collection procedures", hint:"What tools, how you will check quality, and how data will be gathered.", from:["s8"] },
@@ -219,8 +219,7 @@ ${playerHTML(st.id, "Your guide at the "+st.name)}
 <span class="def" ${o?"":"hidden"}>${esc(c.def)}</span><span class="ex" ${o?"":"hidden"}><b>Example:</b> ${esc(c.ex)}</span></button>`; }).join("")}</div>
 <div class="lens">
 <div><span class="eyebrow">Caribbean lens</span><h3>${esc(st.caribbean.title)}</h3><p>${esc(st.caribbean.text)}</p></div>
-<div><span class="eyebrow">Reading link</span><h3>Take this to your reading</h3><ul>${st.reading.map(r=>`<li>${esc(r.cite)}<small>${esc(r.note)}</small></li>`).join("")}</ul>
-${st.resources && st.resources.length?`<div class="res"><span class="eyebrow">Resources from your lecturer</span><ul>${st.resources.map(r=>`<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.label)}</a></li>`).join("")}</ul></div>`:""}</div>
+${st.resources && st.resources.length?`<div class="res"><span class="eyebrow">Useful links</span><h3>Explore further</h3><ul>${st.resources.map(r=>`<li><a href="${esc(r.url)}" target="_blank" rel="noopener">${esc(r.label)}</a></li>`).join("")}</ul></div>`:""}
 </div>
 </section>
 <section class="block" aria-labelledby="p-${st.id}">
@@ -361,7 +360,7 @@ return `<div class="wrap"><section class="st-hero"><span class="eyebrow">Journey
 <p style="max-width:52ch">walked all ten stops of the village, gathered every key concept, completed every practice activity, wrote ${total} words of reflection, and built a Proposal Blueprint.</p>
 <p>Completed ${esc(S.certDate)} · Verification code <code id="certCode">${code()}</code></p>
 <p class="eyebrow">Concept and design © Dr. Rohan Jowallah, Ed.D., FHEA</p></div>
-<p style="margin-top:14px; color:var(--muted)">Take a screenshot of this certificate and submit it with your blueprint, as your lecturer directs.</p>
+<p style="margin-top:14px; color:var(--muted)">Take a screenshot of this certificate to keep a record of your journey.</p>
 ${playerHTML("farewell","Departure message")}
 </div>`;
 }

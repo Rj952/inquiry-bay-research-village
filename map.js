@@ -2,16 +2,13 @@
 const MAP_IMG = "image.png";
 const GS = q => "https://scholar.google.com/scholar?q=" + encodeURIComponent(q);
 const RESOURCES = {
-s1: [ { label: "ERIC: education research database", url: "https://eric.ed.gov/" },
-{ label: "UWI Mona Library", url: "https://www.mona.uwi.edu/library/welcome" } ],
-s2: [ { label: "Find Miron (1998) on Google Scholar", url: GS("Miron 1998 Choosing the right research methods qualitative quantitative or both") },
+s1: [ { label: "ERIC: education research database", url: "https://eric.ed.gov/" } ],
+s2: [ { label: "Choosing qualitative, quantitative or mixed methods: scholarly sources", url: GS("choosing qualitative quantitative mixed methods education research") },
 { label: "Research paradigms: scholarly sources", url: GS("research paradigms education positivism interpretivism pragmatism") } ],
 s3: [ { label: "Writing a problem statement: scholarly sources", url: GS("writing the research problem statement education") },
 { label: "Caribbean education research on Google Scholar", url: GS("Caribbean education research Jamaica") } ],
 s4: [ { label: "Research questions and hypotheses: scholarly sources", url: GS("writing research questions and hypotheses education research") } ],
 s5: [ { label: "ERIC: education research database", url: "https://eric.ed.gov/" },
-{ label: "Onwuegbuzie, Leech & Collins (2012), full text", url: "https://files.eric.ed.gov/fulltext/EJ981457.pdf" },
-{ label: "UWI Library guides", url: "https://libguides.uwi.edu/monaorientation" },
 { label: "APA Style: in-text citations", url: "https://apastyle.apa.org/style-grammar-guidelines/citations" },
 { label: "APA Style: reference examples", url: "https://apastyle.apa.org/style-grammar-guidelines/references/examples" } ],
 s6: [ { label: "Research designs and sampling: scholarly sources", url: GS("sampling techniques qualitative quantitative educational research") } ],

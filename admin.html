@@ -59,9 +59,9 @@ tr.row{cursor:pointer}tr.row:hover td{background:var(--surface-2)}
 footer{color:var(--muted);font-size:.82rem;padding-block:20px}
 </style></head>
 <body>
-<header class="top"><div class="wrap"><div class="brand">Inquiry Bay · Admin<small>Class record for the Research Village</small></div><span id="who"></span></div></header>
+<header class="top"><div class="wrap"><div class="brand">Inquiry Bay · Admin<small>Progress record for the Research Village</small></div><span id="who"></span></div></header>
 <main class="wrap" id="app"></main>
-<footer class="wrap">Inquiry Bay Research Village. © 2026 Dr. Rohan Jowallah. Private lecturer view.</footer>
+<footer class="wrap">Inquiry Bay Research Village. © 2026 Dr. Rohan Jowallah. Private admin view.</footer>
 <script src="data.js"></script>
 <script>
 (function(){
@@ -82,13 +82,13 @@ async function rpc(fn, body){
 }
 function login(msg){
   $("#who").innerHTML="";
-  app.innerHTML=`<div class="login"><form id="lf"><h1>Lecturer sign-in</h1><p class="muted">Enter your admin passcode to see the class record.</p><input id="pc" type="password" autocomplete="current-password" placeholder="Passcode" required>${msg?`<span class="err">${esc(msg)}</span>`:""}<button class="btn" type="submit">Open class record</button></form></div>`;
+  app.innerHTML=`<div class="login"><form id="lf"><h1>Admin sign-in</h1><p class="muted">Enter your admin passcode to see the progress record.</p><input id="pc" type="password" autocomplete="current-password" placeholder="Passcode" required>${msg?`<span class="err">${esc(msg)}</span>`:""}<button class="btn" type="submit">Open progress record</button></form></div>`;
   $("#lf").addEventListener("submit",async e=>{e.preventDefault(); pass=$("#pc").value.trim(); await load(true);});
   setTimeout(()=>$("#pc")&&$("#pc").focus(),50);
 }
 async function load(first){
   try{ rows=await rpc("ibrv_admin_list",{p_pass:pass})||[]; try{sessionStorage.setItem("ibrv-admin",pass);}catch(e){} render(); }
-  catch(e){ if(e.message==="bad"){ try{sessionStorage.removeItem("ibrv-admin");}catch(_){} pass=null; login("That passcode is not right. Try again."); } else if(first){ login("Could not reach the class record. Check your connection and try again."); } }
+  catch(e){ if(e.message==="bad"){ try{sessionStorage.removeItem("ibrv-admin");}catch(_){} pass=null; login("That passcode is not right. Try again."); } else if(first){ login("Could not reach the progress record. Check your connection and try again."); } }
 }
 const stampsOf=r=>r.state&&r.state.stamps?r.state.stamps:{};
 const ago=d=>{const s=(Date.now()-new Date(d))/1000; if(s<60)return"just now"; if(s<3600)return Math.floor(s/60)+" min ago"; if(s<86400)return Math.floor(s/3600)+" h ago"; return Math.floor(s/86400)+" d ago";};
