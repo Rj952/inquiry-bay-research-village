@@ -426,6 +426,7 @@ if (view === "cert"){
 const n = $("#certName"); if (n) n.addEventListener("input", () => { S.name = n.value; save(); $("#certWho").textContent = n.value || "Your name"; $("#certCode").textContent = code(); });
 }
 }
+window.IBApp = { get S(){ return S; }, get view(){ return view; }, get arg(){ return viewArg; }, BP, ALIGN, save, toast, go };
 render();
 })();
 
