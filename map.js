@@ -1,5 +1,5 @@
 (function(){
-const MAP_IMG = "village-map.jpg";
+const MAP_IMG = "image.png";
 const GS = q => "https://scholar.google.com/scholar?q=" + encodeURIComponent(q);
 const RESOURCES = {
 s1: [ { label: "ERIC: education research database", url: "https://eric.ed.gov/" },
