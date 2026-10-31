@@ -186,7 +186,7 @@ return `<div class="wrap">
 <div class="welcome-audio">${playerHTML(all?"farewell":"welcome", all?"Departure message":"Welcome to Inquiry Bay")}</div>
 </section>
 ${all?`<div class="gate"><h2>Your passport is full.</h2><p>You have gathered everything you need. Take your Proposal Blueprint and write your full research proposal.</p><div class="row" style="justify-content:flex-start"><button class="btn big" data-go="cert">View my certificate</button><button class="btn ghost" data-go="passport">Open my passport</button></div></div>`:""}
-<div class="mapbox">${mapSVG()}</div>
+<div class="mapbox">${window.IBMap?IBMap.html(STATIONS.map(s=>({id:s.id,num:s.num,name:s.name,theme:s.theme,lk:!unlocked(s.id),dn:!!S.stamps[s.id],cur:s.id===currentId()&&!PREVIEW})),mapSVG()):mapSVG()}</div>
 <div class="section-h"><h2>Your route</h2><span class="eyebrow">${n} of ${STATIONS.length} stamped</span></div>
 <ol class="route">${STATIONS.map(s => {
 const lk = !unlocked(s.id), dn = !!S.stamps[s.id], cur = s.id===currentId();
